@@ -154,18 +154,30 @@ print(f"📱 Using device: {device}")
 
 print("🚀 Loading AI models...")
 
+# Determine cache directory and loading mode
+import os
+IS_PRODUCTION = os.environ.get('RENDER') or os.environ.get('RAILWAY_ENVIRONMENT')
+if IS_PRODUCTION:
+    CACHE_DIR = './models_cache'
+    LOCAL_ONLY = False
+    print("📦 Production mode: Will download models from HuggingFace")
+else:
+    CACHE_DIR = r'D:\huggingface_cache'
+    LOCAL_ONLY = True
+    print("💻 Local mode: Using cached models")
+
 # RoBERTa for fake news detection
 print("Loading RoBERTa fake news detector...")
 try:
     roberta_tokenizer = AutoTokenizer.from_pretrained(
         "hamzab/roberta-fake-news-classification",
-        cache_dir=r'D:\huggingface_cache',
-        local_files_only=True
+        cache_dir=CACHE_DIR,
+        local_files_only=LOCAL_ONLY
     )
     roberta_model = AutoModelForSequenceClassification.from_pretrained(
         "hamzab/roberta-fake-news-classification",
-        cache_dir=r'D:\huggingface_cache',
-        local_files_only=True
+        cache_dir=CACHE_DIR,
+        local_files_only=LOCAL_ONLY
     ).to(device)
     roberta_model.eval()  # Set to evaluation mode
     print("✅ RoBERTa loaded")
@@ -177,13 +189,13 @@ except Exception as e:
 print("Loading emotion classifier...")
 emotion_tokenizer = AutoTokenizer.from_pretrained(
     "j-hartmann/emotion-english-distilroberta-base",
-    cache_dir=r'D:\huggingface_cache',
-    local_files_only=True
+    cache_dir=CACHE_DIR,
+    local_files_only=LOCAL_ONLY
 )
 emotion_model = AutoModelForSequenceClassification.from_pretrained(
     "j-hartmann/emotion-english-distilroberta-base",
-    cache_dir=r'D:\huggingface_cache',
-    local_files_only=True
+    cache_dir=CACHE_DIR,
+    local_files_only=LOCAL_ONLY
 ).to(device)
 print("✅ Emotion model loaded")
 
@@ -279,13 +291,13 @@ def load_ner_model():
         print("🔄 Loading NER model...")
         ner_tokenizer = AutoTokenizer.from_pretrained(
             "dslim/bert-base-NER",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         )
         ner_model = AutoModelForTokenClassification.from_pretrained(
             "dslim/bert-base-NER",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         ).to(device)
         print("✅ NER model loaded")
 
@@ -296,13 +308,13 @@ def load_hate_speech_model():
         print("🔄 Loading Hate Speech detector...")
         hate_speech_tokenizer = AutoTokenizer.from_pretrained(
             "facebook/roberta-hate-speech-dynabench-r4-target",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         )
         hate_speech_model = AutoModelForSequenceClassification.from_pretrained(
             "facebook/roberta-hate-speech-dynabench-r4-target",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         ).to(device)
         print("✅ Hate Speech detector loaded")
 
@@ -313,13 +325,13 @@ def load_clickbait_model():
         print("🔄 Loading Clickbait detector...")
         clickbait_tokenizer = AutoTokenizer.from_pretrained(
             "elozano/bert-base-cased-clickbait-news",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         )
         clickbait_model = AutoModelForSequenceClassification.from_pretrained(
             "elozano/bert-base-cased-clickbait-news",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         ).to(device)
         print("✅ Clickbait detector loaded")
 
@@ -330,13 +342,13 @@ def load_bias_model():
         print("🔄 Loading Bias detector...")
         bias_tokenizer = AutoTokenizer.from_pretrained(
             "valurank/distilroberta-bias",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         )
         bias_model = AutoModelForSequenceClassification.from_pretrained(
             "valurank/distilroberta-bias",
-            cache_dir=r'D:\huggingface_cache',
-            local_files_only=True
+            cache_dir=CACHE_DIR,
+            local_files_only=LOCAL_ONLY
         ).to(device)
         print("✅ Bias detector loaded")
 
@@ -348,13 +360,13 @@ def load_fake_news_bert_model():
             print("🔄 Loading Fake News BERT #2...")
             fake_news_bert_tokenizer = AutoTokenizer.from_pretrained(
                 "jy46604790/Fake-News-Bert-Detect",
-                cache_dir=r'D:\huggingface_cache',
-                local_files_only=True
+                cache_dir=CACHE_DIR,
+                local_files_only=LOCAL_ONLY
             )
             fake_news_bert_model = AutoModelForSequenceClassification.from_pretrained(
                 "jy46604790/Fake-News-Bert-Detect",
-                cache_dir=r'D:\huggingface_cache',
-                local_files_only=True
+                cache_dir=CACHE_DIR,
+                local_files_only=LOCAL_ONLY
             ).to(device)
             fake_news_bert_model.eval()
             print("✅ Fake News BERT #2 loaded")
@@ -369,13 +381,13 @@ def load_fake_news_pulk_model():
             print("🔄 Loading Fake News Pulk17...")
             fake_news_pulk_tokenizer = AutoTokenizer.from_pretrained(
                 "Pulk17/Fake-News-Detection",
-                cache_dir=r'D:\huggingface_cache',
-                local_files_only=True
+                cache_dir=CACHE_DIR,
+                local_files_only=LOCAL_ONLY
             )
             fake_news_pulk_model = AutoModelForSequenceClassification.from_pretrained(
                 "Pulk17/Fake-News-Detection",
-                cache_dir=r'D:\huggingface_cache',
-                local_files_only=True
+                cache_dir=CACHE_DIR,
+                local_files_only=LOCAL_ONLY
             ).to(device)
             fake_news_pulk_model.eval()
             print("✅ Fake News Pulk17 loaded")
@@ -392,13 +404,13 @@ def load_custom_model():
             print("🔄 Loading custom trained model...")
             custom_tokenizer = AutoTokenizer.from_pretrained(
                 custom_model_path,
-                cache_dir=r'D:\huggingface_cache',
-                local_files_only=True
+                cache_dir=CACHE_DIR,
+                local_files_only=LOCAL_ONLY
             )
             custom_model = AutoModelForSequenceClassification.from_pretrained(
                 custom_model_path,
-                cache_dir=r'D:\huggingface_cache',
-                local_files_only=True
+                cache_dir=CACHE_DIR,
+                local_files_only=LOCAL_ONLY
             ).to(device)
             custom_model.eval()
             print("✅ Custom model loaded")
@@ -557,8 +569,8 @@ def analyze_with_custom_model(text):
     if custom_tokenizer is None or custom_model is None:
         try:
             print(f"Loading custom model from {custom_model_path}...")
-            custom_tokenizer = AutoTokenizer.from_pretrained(custom_model_path, local_files_only=True)
-            custom_model = AutoModelForSequenceClassification.from_pretrained(custom_model_path, local_files_only=True).to(device)
+            custom_tokenizer = AutoTokenizer.from_pretrained(custom_model_path, local_files_only=LOCAL_ONLY)
+            custom_model = AutoModelForSequenceClassification.from_pretrained(custom_model_path, local_files_only=LOCAL_ONLY).to(device)
             print("✅ Custom model loaded")
         except Exception as e:
             print(f"⚠️ Custom model not available: {e}")
@@ -2399,4 +2411,6 @@ if __name__ == '__main__':
         traceback.print_exc()
         print("\n💡 Server crashed. Please restart.")
         sys.exit(1)
+
+
 
