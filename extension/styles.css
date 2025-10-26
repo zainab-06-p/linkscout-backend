@@ -1,0 +1,85 @@
+/**
+ * LinkScout Styles
+ * Smart Analysis. Simple Answers.
+ */
+
+/* Highlighted elements */
+.linkscout-highlighted {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.linkscout-highlighted:hover {
+    opacity: 0.8 !important;
+    transform: translateX(4px) !important;
+}
+
+/* Sidebar animations */
+@keyframes linkscout-slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes linkscout-fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Notification animations */
+@keyframes linkscout-slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes linkscout-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Z-index layers */
+#linkscout-sidebar {
+    z-index: 999999 !important;
+}
+
+#linkscout-notification {
+    z-index: 1000000 !important;
+}
+
+/* Ensure LinkScout elements don't interfere with page layout */
+.linkscout-container {
+    all: initial;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+    #linkscout-sidebar {
+        width: 100% !important;
+    }
+}
+
+/* Print styles - hide LinkScout elements when printing */
+@media print {
+    #linkscout-sidebar,
+    #linkscout-notification,
+    .linkscout-highlighted {
+        display: none !important;
+    }
+}

@@ -1,0 +1,24 @@
+__pycache__/
+*.pyc
+*.pyo
+models_cache/
+D:\huggingface_cache/
+.env
+.env.local
+.env.production
+*.log
+*.json.bak
+.DS_Store
+node_modules/
+.next/
+.vercel/
+build/
+dist/
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Sensitive files
+google_config.json

@@ -1,0 +1,2 @@
+.ls-ripple{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,0.25);animation:ls-ripple 500ms linear;pointer-events:none}
+@keyframes ls-ripple{to{transform:scale(4);opacity:0}}

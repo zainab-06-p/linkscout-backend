@@ -1,0 +1,43 @@
+# LinkScout Combined Requirements
+# Smart Analysis. Simple Answers.
+
+# Core Framework
+flask==2.3.0
+flask-cors==4.0.0
+
+# HTTP & Web Scraping
+requests==2.31.0
+beautifulsoup4==4.12.0
+lxml==4.9.0
+
+# Machine Learning - PyTorch
+torch==2.0.1
+torchvision==0.15.2
+
+# NLP - Transformers
+transformers==4.30.0
+sentencepiece==0.1.99
+accelerate==0.20.0
+safetensors==0.3.1
+
+# Image Processing
+Pillow==10.0.0
+
+# Data Processing
+numpy==1.24.3
+pandas==2.0.2
+
+# Additional NLP
+spacy==3.5.3
+nltk==3.8.1
+
+# API & Utilities
+python-dotenv==1.0.0
+tqdm==4.65.0
+
+# Google Search (Optional)
+google-api-python-client==2.90.0
+
+# Development & Testing (Optional)
+pytest==7.4.0
+jupyter==1.0.0

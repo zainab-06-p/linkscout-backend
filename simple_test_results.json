@@ -1,0 +1,74 @@
+{
+  "accuracy": 100.0,
+  "fp_rate": 0.0,
+  "recall": 100.0,
+  "precision": 100.0,
+  "confusion_matrix": {
+    "TP": 5,
+    "TN": 5,
+    "FP": 0,
+    "FN": 0
+  },
+  "results": [
+    {
+      "id": 1,
+      "expected": "FAKE",
+      "risk_score": 62.87443923950195,
+      "verdict": "TP"
+    },
+    {
+      "id": 2,
+      "expected": "FAKE",
+      "risk_score": 42.0031297642272,
+      "verdict": "TP"
+    },
+    {
+      "id": 3,
+      "expected": "FAKE",
+      "risk_score": 88.20693254470825,
+      "verdict": "TP"
+    },
+    {
+      "id": 4,
+      "expected": "FAKE",
+      "risk_score": 69.86335277557373,
+      "verdict": "TP"
+    },
+    {
+      "id": 5,
+      "expected": "FAKE",
+      "risk_score": 89.97929096221924,
+      "verdict": "TP"
+    },
+    {
+      "id": 6,
+      "expected": "REAL",
+      "risk_score": 0.015217720065265894,
+      "verdict": "TN"
+    },
+    {
+      "id": 7,
+      "expected": "REAL",
+      "risk_score": 0.002713531139306724,
+      "verdict": "TN"
+    },
+    {
+      "id": 8,
+      "expected": "REAL",
+      "risk_score": 0.019043473294004798,
+      "verdict": "TN"
+    },
+    {
+      "id": 9,
+      "expected": "REAL",
+      "risk_score": 0.009730297606438398,
+      "verdict": "TN"
+    },
+    {
+      "id": 10,
+      "expected": "REAL",
+      "risk_score": 0.010841997573152184,
+      "verdict": "TN"
+    }
+  ]
+}
